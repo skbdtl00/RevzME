@@ -1,0 +1,37 @@
+Make a payment gateway named "Revz.ME Payment Gateway",
+Methods:
+Truemoney wallet
+Slip Verify
+
+Minimum Transaction Create:
+Slip verify - 5 THB
+Truemoney wallet - 10 THB
+
+How its works?
+Developers can implement it using apis, like
+POST /v1/transactions/create
+{"method":1, "amount":10, callback:"https://..."}
+# Method: 0 means slip verify, 1 mean Truemoney gift
+** requires api key
+Response:
+{"success":true,"message":"...",data:{...}}
+data includes id, payment url, token checksum, and more
+
+GET /v1/transactions/:id
+** Get transactions info, token checksum
+** required api key
+
+GET /v1/transactions/:id/isPaid
+** Get transactions paid status
+
+and more endpoints, comprehensive api endpoints, basic security measures.
+user can set: Truemoney wallet reciever phone number, planaria slip api key, reciever name to validate (User can select must match/just a part (search string)), Reciever bank number (to show in payment page), Reciever bank type (use can set any string what they want, max 64 character), bank name (to show, not validate)
+Transactions need to be pay in 10 minutes.
+
+Theme: minimalist, shadcn/ui, Anuphan font, Lucide icon
+Language: TH
+
+Next.js for frontend
+Express, PostgreSQL for backend
+
+Pages: Register (require admin validate before user can use), Login, User Dashboard, Admin dashboard, Settings, User/Admin Statistics, Payment page, and more.

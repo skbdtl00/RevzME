@@ -1,0 +1,53 @@
+Parameters
+รายละเอียด
+HTTP Method
+POST
+API URL
+https://www.planariashop.com/api/checkslip.php
+keyapi
+N/A
+action
+( Data ที่ต้องส่ง )
+keyapi = ส่ง Key Api
+qrcode_text = ตัวอักษรที่ได้จากการสแกน QRCODE
+สถานะทำรายการ
+สถานะผ่าน
+{
+    "status": "success",
+    "message": "รายการสำเร็จ",
+    "transactionId": "015087003316BPP03091",
+    "slip_time": "2025-03-28 00:33:16",
+    "slip_timestamp": "1743096796",
+    "amount": 20.02,
+    "check_slip": 1, ############ 0 = สลิปไม่เคยเช็คในระบบ เสีย 0.5 บาท // 1 สลิปเช็คไปแล้ว ไม่เสีย 0.5 บาท
+    "status_check_slip": "สลิปนี้เช็คไปแล้ว (ไม่เสีย 0.5)",
+    "sender": {
+        "name": "Master Detphumi H",
+        "bank_code": "004",
+        "acc_no": "xxx-x-x3794-x",
+        "bank_name": "ธนาคารกสิกรไทย"
+    },
+    "receiver": {
+        "name": "นาย ธนโชติ รักชาติ",
+        "bank_code": "004",
+        "acc_no": "",
+        "bank_name": "ธนาคารกสิกรไทย"
+    }
+}
+สถานะไม่ผ่าน
+{
+    "status": "error",
+    "message": {
+        "status": 0,
+        "massage_th": "qrcode_text ข้อมูลไม่ถูกต้อง",
+        "massage_en": "error list failed."
+    }
+}
+สถานะไม่ผ่าน
+{
+    "status": "error",
+    "message": "ไม่พบ USERNAME นี้" # หรือ ERROR อื่น
+}
+
+method: www-formurl-encoded
+**for the validation, we sould validate reciever name, so we just doesn't get random slips.
